@@ -1,0 +1,20 @@
+X-Plex-Token=X5ii1FgA7pqTN2NAZjvV
+
+173.208.150.58
+
+WS movies 1
+https://app.plex.tv/desktop#!/server/2297eeb017cbe975517e66a369f14876ea412303?key=%2Flibrary%2Fsections%2F1&typeKey=%2Flibrary%2Fsections%2F1%2Fall%3Ftype%3D1&limit=&sort=addedAt%3Adesc&save=1
+WS TV: 2
+https://app.plex.tv/desktop#!/server/2297eeb017cbe975517e66a369f14876ea412303?key=%2Flibrary%2Fsections%2F2&typeKey=%2Flibrary%2Fsections%2F2%2Fall%3Ftype%3D2&save=1&limit=&sort=addedAt%3Adesc
+
+192.168.1.4
+3526 MOVIES: 1
+https://app.plex.tv/desktop#!/server/841ed77136dd6523053becad708a9f3ce40b669b?key=%2Flibrary%2Fsections%2F1&typeKey=%2Flibrary%2Fsections%2F1%2Fall%3Ftype%3D1&sort=addedAt%3Adesc&save=1&filters=duplicate%3D1&limit=
+3526 TV: 5
+https://app.plex.tv/desktop#!/server/841ed77136dd6523053becad708a9f3ce40b669b?key=%2Flibrary%2Fsections%2F5&typeKey=%2Flibrary%2Fsections%2F5%2Fall%3Ftype%3D2&limit=&sort=episode.addedAt%3Adesc&save=1
+
+DRY_RUN=1 plex-sync X5ii1FgA7pqTN2NAZjvV@192.168.1.4/1 X5ii1FgA7pqTN2NAZjvV@173.208.150.58/1
+DRY_RUN=1 plex-sync X5ii1FgA7pqTN2NAZjvV@192.168.1.4/5 X5ii1FgA7pqTN2NAZjvV@173.208.150.58/2
+
+plex-sync X5ii1FgA7pqTN2NAZjvV@192.168.1.4/1 X5ii1FgA7pqTN2NAZjvV@173.208.150.58/1
+plex-sync X5ii1FgA7pqTN2NAZjvV@192.168.1.4/5 X5ii1FgA7pqTN2NAZjvV@173.208.150.58/2

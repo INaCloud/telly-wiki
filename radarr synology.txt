@@ -1,0 +1,75 @@
+In this guide I will take you through the steps to get Radarr up and running in Docker. As more people move away from using Couchpotato I thought it was time to get this guide up, the setup itself is very similar to Sonarr.
+
+Downloading the Container
+
+Open up Docker within DSM and navigate to the ‘Registry’ tab and search for ‘Radarr’ in the list of available containers select the one made by Linux|Server as shown below, right click on it and select ‘Download’ or click the button at the top of the window.
+
+
+Download Radarr from Linux|Server
+You can check the status of the download over on the ‘Image’ tab, while we wait for the download to complete lets move onto the next step.
+
+PUID and PGID
+
+In order for the Docker container to access the shares on the NAS we need to give it the same permissions as a user who has access to those shares, we achieve this by associating the correct Personal User ID and Personal Group ID to the container.
+
+You will need to SSH into your Diskstation using ‘Putty’ or an equivalent program.
+
+Open up Putty, the only thing you need to enter is the IP address of your NAS and select the SSH radio button.
+
+
+SSH into your Synology to find out your ID’s
+Click on open, you will get a prompt asking if you trust the key, if this is the first time you have used SSH, just press OK or accept.
+
+Enter the login information for your Synology user account, you will not be able to see the password as you type it, I use a very long one so I just paste it in from my password manager. (right click acts as paste in Putty)
+
+Once logged in type ‘id’ without the quotes and this will show your UID (aka PUID) which in my case is 1026 and the GID (aka PGID) which is 101 for an administrator. Make note of these values as we will need them later.
+
+
+Command to get the ID’s
+Setting up the container
+
+Now we have downloaded the container and got hold of our user IDs we can move onto the next stage, where we will configure the Docker container. First go back into Docker and click on the ‘Image’ tab, in the list of your containers select the ‘Linux|Server Radarr’ image and click on ‘Launch’
+
+You will now see the initial setup screen, if you want to you can change the name of the container to something else, or if you are using a number of services on a machine with a limited amount of memory or lower powered CPU you can also setup resource limitations, this is generally not required.
+
+
+The initial setup screen
+Next up we are going to click on the ‘Advanced Settings’ button, this will take you to a new window with a number of tabs which we are going to work through and setup with the correct settings. On the first tab you can decide to put an icon on your desktop, you will need to specify the IP address and port so you may want to come back to this once we have decided on the port number later in the guide. The other option is to enable ‘Auto Restart’ I would suggest turning this on as this will ensure Radarr will automatically start up whenever you reboot your NAS.
+
+
+Going advanced
+Volume
+
+We can now move onto the volume tab in which we will be specifying the directories where Radarr will be able find our existing movies, the location where your movies are downloaded to and a folder to store its configuration files. As you can see in the screenshot you will need to browse to each of the directories and add a corresponding mount point inside the Docker container. I generally keep all of my configuration settings in my Docker directory so they can easily be backed up. The other folders you will need to amend based on your own folder locations.
+
+
+Add your existing movie and download locations
+Network
+
+You do not need to setup anything on this page.
+
+Port Settings
+
+We will now configure our port settings, in some of my earlier guides I used to change the external port to something random to make it harder to find, as I had all my ports forwarded for external access, I now use the Synology VPN so you can generally manually specify the same port numbers as the container. Do not leave the port to AUTO as it can potentially change with every restart of the container and you will have to go fishing for it each time.
+
+
+Setup your port
+Links
+
+You do not need to setup anything on this page.
+
+Environment Variables (PGID,  PUID and Timezone)
+
+Next we are going to setup a couple of environment variables this is the user details we took note of earlier so the Docker image has the right access to the shares we just added. As well as this a new requirement is that we add the correct Timezone to the container you can do this as shown in the screen shot below, you can find a list of timezone here https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
+ 
+
+
+Adding the enviroment variables
+Almost Done
+
+You have now completed the setup of the container, click on OK to move back to the initial settings screen and then click next, you will be shown an overall summary of the settings we have specified, this is a good time to double check everything is correct. Finally click on Finish and the container should start to boot.
+
+
+Final Summary
+You should now be able to access Radarr via the IP of your NAS followed by the port number you specified.

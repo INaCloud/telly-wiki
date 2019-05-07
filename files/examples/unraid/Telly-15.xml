@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>telly-15</Name>
+  <Repository>tellytv/telly:v1.5.0</Repository>
+  <Registry>https://hub.docker.com/r/tellytv/telly/~/dockerfile/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>sh</Shell>
+  <Privileged>false</Privileged>
+  <Support>https://hub.docker.com/r/tellytv/telly/</Support>
+  <Project>https://github.com/tellytv/telly</Project>
+  <Overview>Sourced from telly github wiki; based on work by @Porkie on the telly discord</Overview>
+  <Category/>
+  <WebUI>http://[IP]:[PORT:6077]</WebUI>
+  <TemplateURL/>
+  <Icon>https://cdn.discordapp.com/attachments/414169930544578562/415964140432130048/Screenshot_2018-02-21_14.12.44.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1537273060</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Running the bleeding edge branch of telly.  NOT RECOMMENDED for anyone intolerant of breakage.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>6077</HostPort>
+        <ContainerPort>6077</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>6078</HostPort>
+        <ContainerPort>6078</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/telly/telly.db</HostDir>
+      <ContainerDir>/telly/</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value>debug</Value>
+      <Name>LOG_LEVEL</Name>
+      <Mode/>
+    </Variable>
+    <Variable>
+      <Value>/telly/telly.db</Value>
+      <Name>TELLY_DATABASE_FILE</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="Host Port 1" Target="6077" Default="6077" Mode="tcp" Description="Container Port: 6077" Type="Port" Display="always" Required="true" Mask="false">6077</Config>
+  <Config Name="Host Port 2" Target="6078" Default="6078" Mode="tcp" Description="Container Port: 6078" Type="Port" Display="always" Required="true" Mask="false">6078</Config>
+  <Config Name="LOG_LEVEL" Target="LOG_LEVEL" Default="" Mode="" Description="Container Variable: LOG_LEVEL" Type="Variable" Display="always" Required="false" Mask="false">debug</Config>
+  <Config Name="/telly/" Target="/telly/" Default="" Mode="rw" Description="Container Path: /telly/" Type="Path" Display="always" Required="true" Mask="false">/mnt/user/appdata/telly/telly.db</Config>
+  <Config Name="TELLY_DATABASE_FILE" Target="TELLY_DATABASE_FILE" Default="" Mode="" Description="Container Variable: TELLY_DATABASE_FILE" Type="Variable" Display="always" Required="true" Mask="false">/telly/telly.db</Config>
+</Container>

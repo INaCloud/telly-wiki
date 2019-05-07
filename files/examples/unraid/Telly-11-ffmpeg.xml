@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>telly-dev-ffmpeg</Name>
+  <Repository>tellytv/telly:dev-ffmpeg</Repository>
+  <Registry>https://hub.docker.com/r/tellytv/telly/~/dockerfile/</Registry>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Privileged>false</Privileged>
+  <Support>https://hub.docker.com/r/tellytv/telly/</Support>
+  <Project>https://github.com/tellytv/telly</Project>
+  <Overview>Sourced from telly github wiki; created by @Porkie on the telly discord</Overview>
+  <Category/>
+  <WebUI>http://[IP]:[PORT:6077]</WebUI>
+  <TemplateURL/>
+  <Icon>https://cdn.discordapp.com/attachments/414169930544578562/415964140432130048/Screenshot_2018-02-21_14.12.44.png</Icon>
+  <ExtraParams/>
+  <PostArgs/>
+  <DateInstalled>1535050413</DateInstalled>
+  <DonateText/>
+  <DonateLink/>
+  <Description>Running the dev branch of telly, with ffmpeg available.  ffmpeg can be enabled in the config file.</Description>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>6077</HostPort>
+        <ContainerPort>6077</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/telly/</HostDir>
+      <ContainerDir>/etc/telly</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <Environment>
+    <Variable>
+      <Value>Europe/London</Value>
+      <Name>TZ</Name>
+      <Mode/>
+    </Variable>
+  </Environment>
+  <Labels/>
+  <Config Name="Host Port 1" Target="6077" Default="6077" Mode="tcp" Description="Container Port: 6077" Type="Port" Display="always" Required="true" Mask="false">6077</Config>
+  <Config Name="TZ" Target="TZ" Default="Europe/London" Mode="" Description="Timezone" Type="Variable" Display="always" Required="false" Mask="false">Europe/London</Config>
+  <Config Name="/etc/telly" Target="/etc/telly" Default="" Mode="rw" Description="Container Path: /etc/telly" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/telly/</Config>
+</Container>
